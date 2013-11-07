@@ -1,0 +1,57 @@
+package com.senac.estruturas;
+
+	import com.senac.estruturas.PilhaCheia;
+	import com.senac.estruturas.PilhaVazia;
+
+	public class PilhaOperando {
+
+		private double[] dados;
+		private int   topo;
+		
+		public PilhaOperando (int tam)
+		{
+			dados = new double[tam];
+			topo = 0;
+		}
+
+		public double peek () throws PilhaVazia
+		{
+			if (isEmpty())
+				throw new PilhaVazia();
+			
+			return dados[topo - 1]; 
+		}
+
+		public void push (double valor) throws PilhaCheia
+		{
+			if (isFull())
+				throw new PilhaCheia();
+			
+			dados[topo] = valor;		
+			System.out.println("Adicionou na pilha ["+ topo +"] = " + dados[topo]);
+
+			topo++;
+
+		}
+		
+		public double pop () throws PilhaVazia
+		{
+			
+			if (isEmpty())
+				throw new PilhaVazia();
+			topo--;
+			
+			System.out.println("Retirou da pilha [" + dados[topo] + "] = Topo: " + topo);
+			return dados[topo];
+		}
+		
+		public boolean isFull() {
+			return topo == dados.length;
+		}
+
+		public boolean isEmpty() {
+			return topo == 0;
+		}
+	
+
+}
